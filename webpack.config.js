@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
 
+const dirPath = 'docs';
+
 const plugins = [
   new webpack.DefinePlugin({
     'process.env': {
@@ -31,7 +33,7 @@ var config = {
     app: './index.ts'
   },
   output: {
-    path: path.resolve('./dist'),
+    path: path.resolve('./' + dirPath),
     filename: '[name].bundle.js'
   },
   module: {
@@ -61,7 +63,7 @@ var config = {
   },
   plugins: plugins,
   devServer: {
-    contentBase: path.join(__dirname, 'dist/'),
+    contentBase: path.join(__dirname, dirPath + '/'),
     compress: true,
     port: 3000,
     hot: true
